@@ -14,8 +14,10 @@ export class UsersService {
   }
 
   findOne(id: number) {
-    // return this.repo.findOne({ email: 'wang@exotic.io' });
+    // if (!id) return null;
+    if (!id) throw new NotFoundException("The user can't be found!"); // send 404 response
     return this.repo.findOneBy({ id });
+    // return this.repo.findOne({ email: 'wang@exotic.io' });
   }
 
   find(email: string) {
